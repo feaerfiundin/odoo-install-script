@@ -36,6 +36,8 @@ sudo npm install -g less less-plugin-clean-css
 # Install Wkhtmltopdf if needed
 #--------------------------------------------------
 
+source wkhtmltox.sh
+
 # INSTALL_WKHTMLTOPDF_VERSION=`wkhtmltopdf --version`
 # if [ $INSTALL_WKHTMLTOPDF = "True" ] && [ -z "$INSTALL_WKHTMLTOPDF_VERSION" ]; then
 #  echo -e "\n---- Install wkhtml and place shortcuts on correct place for ODOO $OE_VERSION ----"
