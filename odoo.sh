@@ -1,4 +1,6 @@
 #!/bin/bash
+# shellcheck source=wkhtmltox.sh
+# shellcheck source=odoocalculatos.sh
 #--------------------------------------------------
 # Install Dependencies
 #--------------------------------------------------
@@ -106,6 +108,8 @@ fi
 if [ ! -f "$OE_CONFIG" ]; then
     echo -e "* Create server config file"
 
+source odoocalculator.sh
+
 cat <<EOF > $OE_CONFIG
 [options]
 admin_passwd = $OE_SUPERADMIN
@@ -126,10 +130,13 @@ netrpc = True
 netrpc_interface = 127.0.0.1
 netrpc_port = $OE_NETRPC_PORT
 longpolling_port = $OE_LONGPOOL_PORT
-workers = $OE_WORKERS
-limit_time_cpu = 1200
-limit_time_real = 1200
-limit_request = 1200
+workers = $WORKERS
+max_cron_threads = 1
+limit_memory_hard = $MAX_MEMORY
+limit_memory_soft = $MIN_MEMORY
+limit_time_cpu = 60
+limit_time_real = 120
+limit_request = $REQUEST
 proxy_mode = True
 EOF
 
