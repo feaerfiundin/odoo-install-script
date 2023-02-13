@@ -55,7 +55,7 @@ source wkhtmltox.sh
 #  echo "Wkhtmltopdf isn't installed due to the choice of the user!"
 # fi
 
-  
+
 echo -e "\n---- Create Log directory ----"
 mkdir -p $OE_LOG_PATH
 
@@ -76,6 +76,7 @@ if [ ! -d "$OE_INSTALL_DIR/env" ]; then
 fi
 
 source $OE_INSTALL_DIR/env/bin/activate
+
 sudo apt-get install libicu-dev libpq-dev libxml2-dev libxslt1-dev libsasl2-dev libldap2-dev libssl-dev zlib1g-dev -y
 pip install --upgrade pip
 
@@ -135,6 +136,6 @@ EOF
 fi
 
 if [[ $EUID -eq 0 ]]; then
-   echo -e "\n---- Setting permissions on home folder as we are executing script as a root----"
-   chown -R $OE_USER:$OE_USER $OE_HOME
+    echo -e "\n---- Setting permissions on home folder as we are executing script as a root----"
+    chown -R $OE_USER:$OE_USER $OE_HOME
 fi

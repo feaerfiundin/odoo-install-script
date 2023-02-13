@@ -19,9 +19,9 @@ IS_ENTERPRISE="False"
 #set the superadmin password
 OE_SUPERADMIN="admin"
 
-INSTALL_PG_SERVER="True" # if false, than only client will be installed
-OE_DB_HOST="localhost"
-OE_DB_PORT="5432"
+INSTALL_PG_SERVER="False" # if false, than only client will be installed
+OE_DB_HOST="192.168.5.200"
+OE_DB_PORT="4474"
 OE_DB_USER="odoo"
 OE_DB_PASSWORD="odoo"
 PG_VERSION=12
