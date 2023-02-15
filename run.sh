@@ -13,20 +13,20 @@
 # Execute the script to install Odoo:
 # ./odoo-install
 ################################################################################
- 
-if [[ $EUID -ne 0 ]]; then
-   echo "Script is run as regular user. Odoo will be installed from his name" 
-   OE_USER=$(whoami)
-   OE_HOME=$HOME
-else
-   echo "Script is running as root, so creating new odoo user"
-   OE_USER="odoo"
-   OE_HOME="/opt/$OE_USER"
 
-   echo -e "\n---- Create ODOO system user ----"
-   adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'ODOO' --group $OE_USER
-   #The user should also be added to the sudo'ers group.
-   adduser $OE_USER sudo
+if [[ $EUID -ne 0 ]]; then
+    echo "Script is run as regular user. Odoo will be installed from his name"
+    OE_USER=$(whoami)
+    OE_HOME=$HOME
+else
+    echo "Script is running as root, so creating new odoo user"
+    OE_USER="odoo"
+    OE_HOME="/opt/$OE_USER"
+
+    echo -e "\n---- Create ODOO system user ----"
+    adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'ODOO' --group $OE_USER
+    #The user should also be added to the sudo'ers group.
+    adduser $OE_USER sudo
 fi
 
 source conf.sh
@@ -53,9 +53,10 @@ source initd.sh
 # -------------------------------
 # INSTALL WEBSERVER SECTION
 # -------------------------------
-
-source apache.sh
-source nginx.sh
+if [ $INSTALL_WEB_SERVER = "True" ]; then
+    source apache.sh
+    source nginx.sh
+fi
 
 dpkg -b $OE_HOME/odoo_install_$OE_VERSION
 sudo dpkg -i $OE_HOME/odoo_install_$OE_VERSION.deb
