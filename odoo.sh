@@ -66,7 +66,9 @@ mkdir -p $OE_LOG_PATH
 # Make ODOO dir infrastucture
 mkdir -p $OE_INSTALL_DIR
 mkdir -p $OE_WORKSPACE
-mkDIR -P $OE_INSTANCES
+mkdir -P $OE_INSTANCES
+mkdir -p $OE_GIT
+mkdit -p $OE_ADDONS
 
 if [ ! -d "$OE_REPO" ]; then
     echo -e "\n==== Installing ODOO Server ===="
