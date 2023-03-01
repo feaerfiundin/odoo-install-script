@@ -3,14 +3,18 @@
 #odoo
 
 OE_VERSION="14.0"
-OE_INSTALL_DIR="$OE_HOME/$OE_VERSION"
-OE_REPO="$OE_INSTALL_DIR/odoo"
+OE_INSTALL_DIR="$OE_HOME/odoo"
+OE_WORKSPACE="OE_INSTALL_DIR/worksdpace"
+OE_SRC="$OE_INSTALL_DIR/src"
+OE_INSTANCES="$OE_INSTALL_DIR/instances/$OE_VERSION"
+OE_REPO="$OE_SRC/$OE_VERSION"
 #Set to true if you want to install it, false if you don't need it or have it already installed.
 INSTALL_WKHTMLTOPDF="True"
 OE_PORT="8069"
 OE_NETRPC_PORT="8070"
 OE_LONGPOOL_PORT="8072"
-OE_WORKERS="4"
+
+#OE_WORKERS="4"
 #Choose the Odoo version which you want to install. For example: 9.0, 8.0, 7.0 or saas-6. When using 'trunk' the master version will be installed.
 #IMPORTANT! This script contains extra libraries that are specifically needed for Odoo 9.0
 
@@ -19,20 +23,20 @@ IS_ENTERPRISE="False"
 #set the superadmin password
 OE_SUPERADMIN="admin"
 
-INSTALL_PG_SERVER="True" # if false, than only client will be installed
-OE_DB_HOST="localhost"
-OE_DB_PORT="5432"
+INSTALL_PG_SERVER="False" # if false, than only client will be installed
+OE_DB_HOST="192.168.5.200"
+OE_DB_PORT="4474"
 OE_DB_USER="odoo"
 OE_DB_PASSWORD="odoo"
 PG_VERSION=12
 
+INSTALL_WEB_SERVER="True"
 WEB_SERVER="nginx" # or "apache2"
-
 HTTP_PROTOCOL="https"
 HTTPS_PORT="443"
 INSTALL_CERTIFICATE="False"
-PUBLIC_IP="" # SET MANUALLY
-DOMAIN_NAME="" # DNS SHOULD BE ALREADY CONFIGURED!
+PUBLIC_IP=""      # SET MANUALLY
+DOMAIN_NAME=""    # DNS SHOULD BE ALREADY CONFIGURED!
 DOMAIN_ALIASES=() # ("www.demo.ventortech.com" "zzz.demo.ventortech.com")
 LE_EMAIL="@mail"
 LE_CRON_SCRIPT="/etc/cron.daily/certbot-renew"
