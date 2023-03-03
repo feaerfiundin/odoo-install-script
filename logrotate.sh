@@ -11,15 +11,18 @@ echo -e "Install logrotate"
 
 cat <<EOF > /etc/logrotate.d/odoo
 #Path odoo logs
-   $OE_LOG_PATH/*.log {
-        rotate 5
-        size 100M
+    $OE_LOG_PATH/*.log {
+        rotate 90
         daily
         compress
+        dateext
         delaycompress
         missingok
         notifempty
-        su odoo odoo
-}
+        postrotate
+            service odoo-$OE_VERSION-server restart
+        endscript
+        create 640 odoo adm
+    }
 
 EOF

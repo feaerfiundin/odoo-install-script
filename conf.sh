@@ -51,7 +51,7 @@ if [ $IS_ENTERPRISE = "True" ]; then
     OE_TEXT="Enterprise"
 else
     OE_CONFIG="$OE_INSTALL_DIR/odoo.conf"
-    OE_INIT="odoo-$OE_VERSION"
+    OE_INIT="odoo-$OE_VERSION-server"
     OE_WEBSERV_CONF="odoo-$OE_VERSION.conf"
     OE_WEBSERVER_HOST="odoo$OE_VERSION"
     OE_ADDONS_PATH="$OE_INSTALL_DIR/all_addons,$OE_REPO/addons"

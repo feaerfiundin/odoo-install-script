@@ -7,7 +7,7 @@ PG_ALREADY_INSTALLED="False"
 export OE_DB_PORT
 # Let's  first check if postgres already installed
 if [ $INSTALL_PG_SERVER = "True" ]; then
-    SERVER_RESULT=`sudo -E -u postgres bash -c "psql -X -p $OE_DB_PORT -c \"SELECT version();\""`
+    SERVER_RESULT=$(sudo -E -u postgres bash -c "psql -X -p $OE_DB_PORT -c \"SELECT version();\"")
     if [ -z "$SERVER_RESULT" ]; then
         echo "No postgres database is installed on port $OE_DB_PORT. So we will install it."
     else
@@ -20,7 +20,7 @@ if [ $INSTALL_PG_SERVER = "True" ]; then
         fi
     fi
 else
-    CLIENT_RESULT=`psql -V`
+    CLIENT_RESULT=$(psql -V)
     if [ -z "$CLIENT_RESULT" ]; then
         echo "No PosgreSQL Client installed. Installing it."
     else
