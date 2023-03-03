@@ -4,10 +4,9 @@
 
 OE_VERSION="14.0"
 OE_INSTALL_DIR="$OE_HOME/odoo"
-OE_WORKSPACE="OE_INSTALL_DIR/worksdpace"
+OE_WORKSPACE="$OE_INSTALL_DIR/workspace"
 OE_SRC="$OE_INSTALL_DIR/src"
 OE_GIT="$OE_SRC/git"
-OE_ADDONS="$OE_SRC/addons"
 OE_INSTANCES="$OE_INSTALL_DIR/instances/$OE_VERSION"
 OE_REPO="$OE_SRC/$OE_VERSION"
 #Set to true if you want to install it, false if you don't need it or have it already installed.
@@ -53,11 +52,11 @@ if [ $IS_ENTERPRISE = "True" ]; then
     OE_TEXT="Enterprise"
 else
     OE_CONFIG="$OE_INSTALL_DIR/odoo.conf"
-    OE_INIT="odoo-$OE_VERSION-server"
+    OE_INIT="odoo-$OE_VERSION"
     OE_WEBSERV_CONF="odoo-$OE_VERSION.conf"
     OE_WEBSERVER_HOST="odoo$OE_VERSION"
     OE_ADDONS_PATH="$OE_SRC/addons,$OE_REPO/addons"
-    OE_LOG_PATH="/var/log//community"
+    OE_LOG_PATH="/var/log/community"
     OE_TEXT="Community"
 fi
 
