@@ -1,8 +1,9 @@
 #!/bin/bash
 
 source conf.sh
+OE_HOME=/opt/odoo
 
-$OE_OCA_ADDONS=$OE_SRC/git/OCA-addons
+OE_OCA_ADDONS=$OE_SRC/git/OCA-addons
 
 mkdir -p $OE_OCA_ADDONS
 cd $OE_OCA_ADDONS
@@ -38,13 +39,14 @@ git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/stock-logistics-
 git clone --depth 1 --branch $OE_VERSION https://github.com/OCA/web.git
 
 
-dir=$(find . -type d -maxdepth 1)
+dir=$(find . -maxdepth 1 -type d )
+
 source $OE_INSTANCES/venv/bin/activate
 
 for i in $dir ;
 do 
     if [ -f "$i/requirements.txt" ]; then
         echo -e "installate requirements per $i"
-        pip3 install -r $OE_REPO/requirements.txt
+        pip3 install -r $i/requirements.txt
     fi
 done 
