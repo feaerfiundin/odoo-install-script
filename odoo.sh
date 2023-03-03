@@ -68,7 +68,7 @@ mkdir -p $OE_INSTALL_DIR
 mkdir -p $OE_WORKSPACE
 mkdir -P $OE_INSTANCES
 mkdir -p $OE_GIT
-mkdit -p $OE_ADDONS
+
 
 if [ ! -d "$OE_REPO" ]; then
     echo -e "\n==== Installing ODOO Server ===="
